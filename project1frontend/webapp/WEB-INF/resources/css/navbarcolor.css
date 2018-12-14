@@ -1,0 +1,8 @@
+@charset "ISO-8859-1";
+#navcolor{
+	background-color: #000000;
+}
+#links a{
+	color:#ffffff;
+	font-size: 18px
+}
