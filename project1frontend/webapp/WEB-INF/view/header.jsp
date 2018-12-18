@@ -5,7 +5,7 @@
 <!DOCTYPE html  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<link rel="stylesheet" href="resources/css/navbarcolor.css">
+<link rel="stylesheet" href="<c:url value='/resources/css/navbarcolor.css'></c:url>">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Bikes Wale</title>
@@ -21,7 +21,7 @@
 
 
 <nav class="navbar navbar-default" id="navcolor">
-<a href="" class="navbar-brand"><img src="resources/images/Royal.jpg" height="35px" width="75px" ></a>
+<a href="" class="navbar-brand"><img src="<c:url value='/resources/images/Royal.jpg'></c:url>" height="35px" width="75px" ></a>
 <button type="button" class="navbar-toggle collapsed"
    data-toggle="collapse" data-target="#collapse-example" aria-expanded="false">
     <span class="sr-only">Toggle navigation</span>
@@ -34,8 +34,8 @@
 <div class="collapse navbar-collapse" id="collapse-example">
 <ul class="nav navbar-nav" id="links">
 
-<li><a href="home"><span class="glyphicon glyphicon-home"style="color:#ff0000"></span>Home</a></li>
-<li><a href="aboutus">About Us</a></li>
+<li><a href="<c:url value='/home'></c:url>"><span class="glyphicon glyphicon-home"style="color:#ff0000"></span>Home</a></li>
+<li><a href="<c:url value='/aboutus'></c:url>">About Us</a></li>
 <li><a href="<c:url value='/all/getallproducts'></c:url>">Browse all products</a></li>
 <li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Select By Cateogory

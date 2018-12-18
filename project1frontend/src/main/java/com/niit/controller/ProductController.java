@@ -6,7 +6,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.niit.dao.ProductDao;
 import com.niit.models.Product;
@@ -26,6 +28,16 @@ public String getAllProducts(Model model) {
 	System.out.println(products);
 	model.addAttribute("products",products);
 	return "Productlist";
-	
+}
+@RequestMapping(value="/all/getproduct")
+public String getProduct(@RequestParam int id, Model model) {
+	Product product=productDao.getProduct(id);
+	model.addAttribute("productAttr",product);
+	return "viewproduct";
+	}
+@RequestMapping(value="/admin/deleteproduct")
+public String deleteProduct(@RequestParam int id,Model model) {
+	productDao.deleteProduct(id);
+	return"redirect:/all/getallproducts";
 }
 }

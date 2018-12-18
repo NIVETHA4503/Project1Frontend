@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-${products}
+<h3>All Products:-</h3>
 
 <div class="container">
 <table class="table table-bordered">
@@ -25,12 +25,16 @@ ${products}
 <tr>
 <td>${p.productname }</td>
 <td>${p.price}</td>
-<td></td>
+<td>
+<a href="<c:url value='/all/getproduct?id=${p.id}'></c:url>"><span class="glyphicon glyphicon-info-sign"></span></a>
+<a href="<c:url value='/admin/deleteproduct?id=${p.id}'></c:url>"><span class="glyphicon glyphicon-trash"></span></a>
+</td>
+
 </tr>
 </c:forEach>
 </table>
 
 
-
+</div>
 </body>
 </html>
