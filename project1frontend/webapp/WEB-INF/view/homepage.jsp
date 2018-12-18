@@ -53,14 +53,14 @@
         <img src="resources/images/Royal2.jpg" alt="Royal Enfield-Red" style="width:100%;">
         <div class="carousel-caption">
           <h3>Royal Enfield</h3>
-          <p>Only Royal people ride Enfield thatâ€™s why it is "Royal Enfield"</p>
+          <p>Only Royal people ride Enfield that'€™s why it is "Royal Enfield"</p>
         </div>
       </div>
 <div class="item">
         <img src="resources/images/Royal3.jpg" alt="Royal Enfield-white" style="width:100%;">
         <div class="carousel-caption">
           <h3>Royal Enfield</h3>
-          <p> You canâ€™t buy happiness but when you buy a Royal Enfield, it is one that replaces the happinessâ€¦</p>
+          <p> You can'€™t buy happiness but when you buy a Royal Enfield, it is one that replaces the happiness</p>
         </div>
       </div>
   
