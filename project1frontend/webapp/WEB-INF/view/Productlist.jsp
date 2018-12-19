@@ -10,7 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>All Products:-</h3>
+<h3>All Products:</h3>
 
 <div class="container">
 <table class="table table-bordered">

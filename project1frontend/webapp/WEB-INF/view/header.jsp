@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
      <%@ page isELIgnored="false" %>
      <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+     <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!DOCTYPE html  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -37,6 +38,7 @@
 <li><a href="<c:url value='/home'></c:url>"><span class="glyphicon glyphicon-home"style="color:#ff0000"></span>Home</a></li>
 <li><a href="<c:url value='/aboutus'></c:url>">About Us</a></li>
 <li><a href="<c:url value='/all/getallproducts'></c:url>">Browse all products</a></li>
+<li><a href="<c:url value='/admin/getproductform'></c:url>">Add Products</a></li>
 <li class="dropdown">
 			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Select By Cateogory
 			<span class="caret"></span></a>
