@@ -24,7 +24,7 @@ public class ProductController {
 	}
 @RequestMapping(value="/all/getallproducts")
 public String getAllProducts(Model model) {
-	List<Product>products=productDao.getAllProducts();
+	List<Product> products=productDao.getAllProducts();
 	System.out.println(products);
 	model.addAttribute("products",products);
 	return "Productlist";
@@ -48,9 +48,22 @@ public String getProductform(Model model) {
 }
 @RequestMapping(value="/admin/addproduct")
 public String addProduct(@ModelAttribute Product product) {
-	productDao.addProduct(product);
+	productDao.saveOrUpdate(product);
 	return "redirect:/all/getallproducts";
 	}
+@RequestMapping (value="/admin/getupdateform")
+public String getupdateform(@RequestParam int id, Model model) {
+	Product product=productDao.getProduct(id);
+	model.addAttribute ("Product",product);
+	return "updateproductform";
+	}
+@RequestMapping (value="/admin/updateproduct")
+public String updateproduct(@ModelAttribute Product product) {
+	productDao.saveOrUpdate(product);
+	return"redirect:/all/getallproducts";
+	
+}
+
 
 
 }

@@ -11,15 +11,16 @@
 </head>
 <body>
 <div class="container">
-<c:url value="/admin/addproduct" var="url"></c:url>
-<form:form action="${url}" modelAttribute="product">
+<c:url value="/admin/updateproduct" var="url"></c:url>
+<form:form action="${url}" modelAttribute="Product">
 <pre>
+<form:hidden path="id"></form:hidden>
 Enter Product name	:	<form:input path="productname"/>
 Enter Description	:	<form:input path="description"/>
-Enter Price		 :	<form:input path="price"/>
+Enter Price		:	<form:input path="price"/>
 Enter Quantity		: 	<form:input path="quantity"/>
 
-<input type="submit" value="Add Product" ></button>
+<input type="submit" value="Update Product" ></button>
 </pre>
 </form:form>
 
