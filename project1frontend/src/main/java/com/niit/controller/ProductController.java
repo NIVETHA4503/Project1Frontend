@@ -3,10 +3,13 @@ package com.niit.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -47,20 +50,25 @@ public String getProductform(Model model) {
 	return "productform";
 }
 @RequestMapping(value="/admin/addproduct")
-public String addProduct(@ModelAttribute Product product) {
+public String addProduct(@ModelAttribute @Valid Product product,BindingResult result) {
+	if(result.hasErrors())
+	return "productform";
 	productDao.saveOrUpdate(product);
 	return "redirect:/all/getallproducts";
 	}
 @RequestMapping (value="/admin/getupdateform")
 public String getupdateform(@RequestParam int id, Model model) {
 	Product product=productDao.getProduct(id);
-	model.addAttribute ("Product",product);
+	model.addAttribute ("product",product);
 	return "updateproductform";
 	}
 @RequestMapping (value="/admin/updateproduct")
-public String updateproduct(@ModelAttribute Product product) {
+public String updateproduct(@ModelAttribute @Valid Product product,BindingResult result, Model model) {
+	if(result.hasErrors())
+	return "updateproductform";
+
 	productDao.saveOrUpdate(product);
-	return"redirect:/all/getallproducts";
+	return "redirect:/all/getallproducts";
 	
 }
 

@@ -14,10 +14,10 @@
 <c:url value="/admin/addproduct" var="url"></c:url>
 <form:form action="${url}" modelAttribute="product">
 <pre>
-Enter Product name	:	<form:input path="productname"/>
-Enter Description	:	<form:input path="description"/>
-Enter Price		 :	<form:input path="price"/>
-Enter Quantity		: 	<form:input path="quantity"/>
+Enter Product name	:	<form:input path="productname"/><form:errors path="productname" cssStyle="color:red"/>
+Enter Description	:	<form:input path="description"/><form:errors path="description" cssStyle="color:red"/>
+Enter Price		:	<form:input path="price"/><form:errors path="price" cssStyle="color:red"/>
+Enter Quantity		: 	<form:input path="quantity"/><form:errors path="quantity" cssStyle="color:red"/>
 
 <input type="submit" value="Add Product" ></button>
 </pre>
