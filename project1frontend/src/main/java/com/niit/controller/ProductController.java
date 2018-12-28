@@ -1,6 +1,11 @@
 package com.niit.controller;
 
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import javax.validation.Valid;
@@ -15,8 +20,10 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.niit.dao.ProductDao;
+import com.niit.models.Category;
 import com.niit.models.Product;
 @Controller
 public class ProductController {
@@ -38,40 +45,84 @@ public String getProduct(@RequestParam int id, Model model) {
 	model.addAttribute("productAttr",product);
 	return "viewproduct";
 	}
+
+
 @RequestMapping(value="/admin/deleteproduct")
 public String deleteProduct(@RequestParam int id,Model model) {
 	productDao.deleteProduct(id);
-	return"redirect:/all/getallproducts";
+	return "redirect:/all/getallproducts";
 }
+
+
 @RequestMapping(value="/admin/getproductform")
 public String getProductform(Model model) {
 	Product p=new Product();
 	model.addAttribute("product", p);
+	List<Category> categories=productDao.getAllCategories();
+	model.addAttribute("categories",categories);
 	return "productform";
 }
+
+
 @RequestMapping(value="/admin/addproduct")
-public String addProduct(@ModelAttribute @Valid Product product,BindingResult result) {
-	if(result.hasErrors())
+public String addProduct(@ModelAttribute @Valid Product product,BindingResult result,Model model,HttpServletRequest request) {
+	if(result.hasErrors()) {
+		model.addAttribute("categories,productDao.getAl1Categories()");
 	return "productform";
+	}
 	productDao.saveOrUpdate(product);
+	System.out.println(request.getServletContext().getRealPath("/"));
+	Path path=Paths.get(request.getServletContext().getRealPath("/")+"/WEB-INF/resources/images/"+product.getId()+".png");
+	MultipartFile img=product.getImage();
+	if(img!=null&&!img.isEmpty()) {
+		File file=new File(path.toString());
+		try {
+			img.transferTo(file);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		}
 	return "redirect:/all/getallproducts";
 	}
+
+
 @RequestMapping (value="/admin/getupdateform")
 public String getupdateform(@RequestParam int id, Model model) {
 	Product product=productDao.getProduct(id);
 	model.addAttribute ("product",product);
+	List<Category> categories=productDao.getAllCategories();
+	model.addAttribute("categories",categories);
 	return "updateproductform";
 	}
 @RequestMapping (value="/admin/updateproduct")
-public String updateproduct(@ModelAttribute @Valid Product product,BindingResult result, Model model) {
-	if(result.hasErrors())
-	return "updateproductform";
-
+public String updateproduct(@ModelAttribute @Valid Product product,BindingResult result, Model model,HttpServletRequest request) {
+	if(result.hasErrors()) {
+		model.addAttribute("categories,productDao.getAl1Categories()");
+		return "updateproductform";
+	}
+	System.out.println(request.getServletContext().getRealPath("/"));
+	Path path=Paths.get(request.getServletContext().getRealPath("/")+"/WEB-INF/resources/images/"+product.getId()+".png");
+	MultipartFile img=product.getImage();
+	if(img!=null&&!img.isEmpty()) {
+		File file=new File(path.toString());
+		try {
+			img.transferTo(file);
+		} catch (IllegalStateException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	productDao.saveOrUpdate(product);
 	return "redirect:/all/getallproducts";
 	
 }
-
-
-
 }
+
+

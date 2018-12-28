@@ -16,26 +16,30 @@
 <table class="table table-bordered">
 <thead>
 <tr>
+<th>Product Id</th>
+<th>Image</th>
 <th>Product Name</th>
+<th>Category Name</th>
 <th>Price</th>
 <th>Action</th>
 </tr>
 </thead>
 <c:forEach items="${products}" var="p">
 <tr>
+<td>${p.id }</td>
+<td><img src="<c:url value='/resources/images/${p.id}.png'></c:url>" height="40px" width="60px"></td>
 <td>${p.productname }</td>
+<td>${p.category.categoryname}</td>
 <td>${p.price}</td>
 <td>
 <a href="<c:url value='/all/getproduct?id=${p.id}'></c:url>"><span class="glyphicon glyphicon-info-sign"></span></a>
 <a href="<c:url value='/admin/deleteproduct?id=${p.id}'></c:url>"><span class="glyphicon glyphicon-trash"></span></a>
 <a href="<c:url value='/admin/getupdateform?id=${p.id}'></c:url>"><span class="glyphicon glyphicon-pencil"></span></a>
 </td>
-
 </tr>
 </c:forEach>
 </table>
-
-
 </div>
+
 </body>
 </html>

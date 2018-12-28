@@ -11,10 +11,12 @@
 <div class="container">
 <b>Product Details</b>
 <pre>
+
 <b>Product Name:</b>${productAttr.productname }
 <b>Description:</b>${productAttr.description }
 <b>Price:</b>${productAttr.price}
 <b>InStock:</b>${productAttr.quantity }
+<b>Category name:</b>${productAttr.category.categoryname }
 <button class="btn btn-lg btn-info">Add To Cart</button>
 </pre>
 <a href="<c:url value='/all/getallproducts'></c:url>">Previous Page</a>

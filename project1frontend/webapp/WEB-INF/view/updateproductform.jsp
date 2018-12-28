@@ -13,13 +13,19 @@
 <body>
 <div class="container">
 <c:url value="/admin/updateproduct" var="url"></c:url>
-<form:form action="${url }" modelAttribute="product">
+<form:form action="${url }" modelAttribute="product" enctype="multipart/form-data">
 <pre>
 <form:hidden path="id"></form:hidden>
 Enter Product name	:	<form:input path="productname"/><form:errors path="productname" cssStyle="color:red"/>
 Enter Description	:	<form:input path="description"/><form:errors path="description" cssStyle="color:red"/>
 Enter Price		:	<form:input path="price"/><form:errors path="price" cssStyle="color:red"/>
 Enter Quantity		: 	<form:input path="quantity"/><form:errors path="quantity" cssStyle="color:red"/>
+Select Category		:	<form:select path="category.categoryid">
+<c:forEach items="${categories }" var="c">
+<form:option value="${c.categoryid }">${c.categoryname }</form:option>
+</c:forEach>
+</form:select>
+Upload image		:<form:input path="image" type="file"/>
 
 <input type="submit" value="Update Product" ></button>
 </pre>

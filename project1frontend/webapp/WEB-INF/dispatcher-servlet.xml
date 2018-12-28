@@ -22,11 +22,12 @@
             <value>.jsp</value>
         </property>
     </bean>
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+  </bean>
       <mvc:resources location="/WEB-INF/resources/" mapping="/resources/**"></mvc:resources>
    <mvc:default-servlet-handler/>
  
 </beans>
-
 
 
 
