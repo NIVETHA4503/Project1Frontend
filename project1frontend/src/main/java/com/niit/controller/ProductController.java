@@ -47,10 +47,18 @@ public String getProduct(@RequestParam int id, Model model) {
 	}
 
 
-@RequestMapping(value="/admin/deleteproduct")
-public String deleteProduct(@RequestParam int id,Model model) {
-	productDao.deleteProduct(id);
-	return "redirect:/all/getallproducts";
+@RequestMapping(value="/admin/deleteproduct/{id}")
+public String deleteProduct(@RequestParam int id,HttpServletRequest request) {
+	Path paths=Paths.get(request.getServletContext().getRealPath("/")+"/WEB-INF/resources/images/"+id+".png");
+			if(Files.exists(paths))
+				try {
+					Files.delete(paths);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			productDao.deleteProduct(id);
+return "redirect:/all/getallproducts";
 }
 
 
@@ -67,7 +75,7 @@ public String getProductform(Model model) {
 @RequestMapping(value="/admin/addproduct")
 public String addProduct(@ModelAttribute @Valid Product product,BindingResult result,Model model,HttpServletRequest request) {
 	if(result.hasErrors()) {
-		model.addAttribute("categories,productDao.getAl1Categories()");
+		model.addAttribute("categories",productDao.getAllCategories());
 	return "productform";
 	}
 	productDao.saveOrUpdate(product);

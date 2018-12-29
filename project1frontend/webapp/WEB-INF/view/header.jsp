@@ -51,7 +51,7 @@
 			<li><a href="">Royal Enfield Bullet</a></li>
 			</ul>
 			</li>
-<li><a href="/signup">Sign Up</a></li>
+<li><a href="<c:url value='/all/getregistrationform'></c:url>">Sign Up</a></li>
 <li><a href="/signin">SignIn<span class="glyphicon glyphicon-log-in"style="color:#ff0000"></span></a></li>
 <li><a >SignOut<span class="glyphicon glyphicon-log-out"style="color:#ff0000"></span></a></li>
 
