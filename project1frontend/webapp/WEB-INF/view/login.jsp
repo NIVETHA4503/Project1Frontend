@@ -5,9 +5,10 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>Log in</title>
+<title>Login</title>
 </head>
 <body>
-<h4>Login</h4>
+<h2>Logged in</h2>
+
 </body>
 </html>

@@ -12,16 +12,29 @@ import com.niit.models.Customer;
 @Controller
 public class CustomerController {
 	@Autowired
-	private CustomerDao customerDao;
-	@RequestMapping(value="/all/getregistrationform")
-	public String getRegisterationForm(Model model) {
-		Customer customer=new Customer();
-		model.addAttribute("Customer",customer);
-		return "registrationform";
-		}
-	@RequestMapping(value="/all/register")
-	public String registerCustomer(@ModelAttribute Customer customer) {
-		customerDao.registerCustomer(customer);
+private CustomerDao customerDao;
+@RequestMapping(value="/all/getregistrationform")	
+public String getRegistrationForm(Model model){
+	Customer customer=new Customer();
+	model.addAttribute("customer",customer);//This model attribute customer will be used in registrationform.jsp
+	return "registrationform";
+	
+	
+}
+@RequestMapping(value="/all/register")
+public String registerCustomer(@ModelAttribute Customer customer){
+	System.out.println(customer.getFirstname());
+	System.out.println(customer.getLastname());
+	System.out.println(customer.getPhonenumber());
+	System.out.println(customer.getUser().getEmail());
+	System.out.println(customer.getUser().getAuthorities().getRole());
+	customerDao.registerCustomer(customer);
 	return "login";
 }
+
+
+
+
+
 }
+
