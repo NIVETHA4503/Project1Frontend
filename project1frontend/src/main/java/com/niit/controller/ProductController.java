@@ -16,6 +16,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -48,7 +49,7 @@ public String getProduct(@RequestParam int id, Model model) {
 
 
 @RequestMapping(value="/admin/deleteproduct/{id}")
-public String deleteProduct(@RequestParam int id,HttpServletRequest request) {
+public String deleteProduct(@PathVariable int id,HttpServletRequest request) {
 	Path paths=Paths.get(request.getServletContext().getRealPath("/")+"/WEB-INF/resources/images/"+id+".png");
 	if(Files.exists(paths))
 		try {
