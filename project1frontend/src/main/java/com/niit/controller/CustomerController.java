@@ -16,18 +16,24 @@ private CustomerDao customerDao;
 @RequestMapping(value="/all/getregistrationform")	
 public String getRegistrationForm(Model model){
 	Customer customer=new Customer();
-	model.addAttribute("customer",customer);//This model attribute customer will be used in registrationform.jsp
+	model.addAttribute("customer",customer);
 	return "registrationform";
 	
 	
 }
 @RequestMapping(value="/all/register")
-public String registerCustomer(@ModelAttribute Customer customer){
+public String registerCustomer(@ModelAttribute Customer customer, Model model){
 	System.out.println(customer.getFirstname());
 	System.out.println(customer.getLastname());
 	System.out.println(customer.getPhonenumber());
 	System.out.println(customer.getUser().getEmail());
 	System.out.println(customer.getUser().getAuthorities().getRole());
+	boolean isUnique=customerDao.isEmailUnique(customer.getUser().getEmail());
+	if(isUnique==false)
+	{
+		model.addAttribute("errorMessage","Email already exists.. Please choose different email id");
+		return "registrationform";
+	}
 	customerDao.registerCustomer(customer);
 	return "login";
 }

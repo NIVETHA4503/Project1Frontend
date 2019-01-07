@@ -1,8 +1,23 @@
 @charset "ISO-8859-1";
+/* .navbar-default{ */
+/* 	background-color:#ffffff; */
+	
+/* } */
+/* .nav navbar-nav li a */
+/* { */
+/* color:#0000ff;	 */
+/* } */
+/* .nav navbar-nav li a:hover */
+/* { */
+/* 	background-color:#ffffff; */
+/* } */
+
+
+
 #navcolor{
-	background-color: #000000;
+	background-color:#b3d9ff;
 }
 #links a{
-	color:#ffffff;
+	color:#737373;
 	font-size: 18px
 }

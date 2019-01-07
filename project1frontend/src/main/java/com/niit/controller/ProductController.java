@@ -50,13 +50,13 @@ public String getProduct(@RequestParam int id, Model model) {
 @RequestMapping(value="/admin/deleteproduct/{id}")
 public String deleteProduct(@RequestParam int id,HttpServletRequest request) {
 	Path paths=Paths.get(request.getServletContext().getRealPath("/")+"/WEB-INF/resources/images/"+id+".png");
-			if(Files.exists(paths))
-				try {
-					Files.delete(paths);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+	if(Files.exists(paths))
+		try {
+			Files.delete(paths);
+		} catch (IOException e) {
+
+			e.printStackTrace();
+		}
 			productDao.deleteProduct(id);
 return "redirect:/all/getallproducts";
 }
@@ -130,6 +130,16 @@ public String updateproduct(@ModelAttribute @Valid Product product,BindingResult
 	productDao.saveOrUpdate(product);
 	return "redirect:/all/getallproducts";
 	
+}
+@RequestMapping("/all/searchbycategory")
+public String searchByCategory(@RequestParam String searchCondition,Model model){
+	if(searchCondition.equals("All"))
+		model.addAttribute("searchCondition","");
+	else
+		model.addAttribute("searchCondition",searchCondition);
+	List<Product> products=productDao.getAllProducts();
+	model.addAttribute("products",products);
+	return "Productlist";
 }
 }
 
